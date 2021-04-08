@@ -1,0 +1,17 @@
+tasks:
+- name: Download auditbeat
+  get_url:
+    url: curl -L -O https://artifacts.elastic.co/downloads/beats/auditbeat/auditbeat-{{ version }}-x86_64.rpm
+    dest: ~/auditbeat-{{ version }}-x86_64.rpm
+  
+- name: Install Auditbeat
+  command: rpm -vi auditbeat-7.12.0-x86_64.rpm
+  become: yes
+  become_user: ansible
+  args:
+    chdir: ~
+
+- name: Start the Service
+  service:
+    name: auditbeat
+    state: restarted

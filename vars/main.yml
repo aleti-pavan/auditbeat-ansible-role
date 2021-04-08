@@ -1,0 +1,11 @@
+---
+auditbeat:
+  version: "6.0.1"
+
+fields:
+  environment: ""
+
+logstash:
+  name: "logstash.common.dev"
+  port: 5044
+  
